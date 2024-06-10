@@ -1,0 +1,5 @@
+first_word = set(input())
+second_word = set(input())
+third_word = set(input())
+inter = (first_word & second_word) | (first_word & third_word) | (second_word & third_word)
+print(*inter, sep="")
