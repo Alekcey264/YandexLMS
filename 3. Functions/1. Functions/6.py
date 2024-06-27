@@ -5,5 +5,5 @@ def graph(func):
     print('y', end='\t')
     y_axis = list()
     for x in x_axis:
-        y_axis.append(eval(func.replace('x', str(x))))
+        y_axis.append(eval(func.replace('x', f"({str(x)})")))
     print(*y_axis, sep='\t')
