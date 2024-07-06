@@ -2,8 +2,7 @@ import sys
 import pymorphy3
 
 
-text = "варкалось шорька пырялись 1\nвечерело 28 темнеющий зелюки пырялись\nмюмзик сладко хрюкотал 32\nи пылкает огнем 42".split("\n")
-#text = list(map(str.strip, sys.stdin))
+text = list(map(str.strip, sys.stdin))
 morph = pymorphy3.MorphAnalyzer()
 for item in text:
     numb = None
@@ -11,9 +10,9 @@ for item in text:
     item = item.split()
     for word in item:
         if 'NOUN' in morph.parse(word)[0].tag:
-            noun = word
+            noun = morph.parse(word)[0]
             continue
         if 'NUMB' in morph.parse(word)[0].tag:
-            numb = word
+            numb = int(morph.parse(word)[0].word)
             continue
-    print(numb, morph.parse(noun)[0].make_agree_with_number(int(numb)).inflect({'nomn'}).word)
+    print(numb, noun.make_agree_with_number(numb).inflect({'nomn'}).word)

@@ -1,0 +1,18 @@
+В письме обычно есть три части: приветствие, собственно письмо и прощание. Вводится текст, на основе которого нужно создать документ в формате docx, в котором первая из введенных строк – приветствие, две последние – прощание, остальные – рядовые абзацы.
+
+Форматирование приветствия: выравнивание по правому краю, курсив, шрифт Arial, кегль 11.
+Форматирование рядовых абзацев: выравнивание по ширине, первая строка с отступом 0.5 дюйма, шрифт Times New Roman, кегль 12.
+Форматирование прощания: выравнивание по левому краю без отступа, последняя строка – полужирное начертание, шрифт по умолчанию.
+
+Сохраните письмо в файл letter.docx.
+
+Если ввести такой текст:
+
+Dear Kate and Nick,
+We are looking forward very much to your visit to our country this summer. We are expecting you at the beginning of July and are hoping that you may stay until the end of the month or longer.
+We consider it a privilege for us to receive you as guests in our house. We are very grateful indeed to you for consenting to come and stay with us. We are looking forward to oﬀering you hospitality in return for the hospitality you have kindly given us on many occasions.
+We want you to understand that we will see to all your needs while you are with us and to any expenses that may arise.
+Yours sincerely,
+John and Mary
+
+и отформатировать его по описанным правилам, то выглядеть письмо может так:
