@@ -43,6 +43,7 @@ class Wagon:
         return self.number
     
 tr = Train(206, [Wagon(1), Wagon(2), Wagon(3)])
+print(tr)
 print(', '.join([str(item.get_number()) for item in tr]))
 print(f"This train has number {tr.get_number()}.")
 for i in range(4, 10):
