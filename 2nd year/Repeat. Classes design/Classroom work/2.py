@@ -13,7 +13,7 @@ class Note:
 
     def __str__(self):
         return self.name
-    
+       
     def __lchange(self, times, type: list):
         temp = self.name
         for _ in range(times):
@@ -120,3 +120,64 @@ class Note:
         else:
             other_num = LONG_PITCHES.index(other.name)
         return INTERVALS[abs(other_num - num)]
+
+
+class Melody:
+    def __init__(self, *args):
+        if args:
+            self.melody = args[0]  
+        else:
+            self.melody = list()
+
+    def __str__(self):
+        return ', '.join([item.name for item in self.melody]).capitalize()
+    
+    def append(self, new):
+        self.melody.append(new)
+
+    def replace_last(self, new):
+        self.melody[-1] = new
+
+    def remove_last(self):
+        self.melody.pop()
+
+    def clear(self):
+        self.melody.clear()
+
+    def __len__(self):
+        return len(self.melody)
+    
+    def __lshift__(self, times):
+        temp_melody = self.melody
+        for _ in range(times):
+            temp_list = [item.name for item in temp_melody]
+            if "до" not in temp_list and "до-о" not in temp_list:
+                temp_melody = [item << 1 for item in temp_melody]
+            else: 
+                break
+        else:
+            return Melody(temp_melody)
+        return ', '.join([item.name for item in self.melody]).capitalize()
+
+    def __rshift__(self, times):
+        temp_melody = self.melody
+        for _ in range(times):
+            temp_list = [item.name for item in temp_melody]
+            if "си" not in temp_list and "си-и" not in temp_list:
+                temp_melody = [item >> 1 for item in temp_melody]
+            else: 
+                break
+        else:
+            return Melody(temp_melody)
+        return ', '.join([item.name for item in self.melody]).capitalize()
+
+    
+melody = Melody([Note('ля'), Note('соль'), Note('ми'),  Note('до', True)])
+print(melody)
+print(Melody() >> 2)
+melody_up = melody >> 1
+melody_down = melody << 1
+melody.replace_last(Note('соль'))
+print('>> 1:', melody_up)
+print('<< 1:', melody_down)
+print(melody)
