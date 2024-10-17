@@ -43,29 +43,54 @@ class CheckMark:
         self.point_a = point_a
         self.point_b = point_b
         self.point_c = point_c
+        self.points = [self.point_a, self.point_b, self.point_c]
 
     def __get_status(self, point_a, point_b, point_c):
-        return False
+        determinant = (point_b.x - point_a.x) * (point_c.y - point_b.y) - \
+                      (point_c.x - point_b.x) * (point_b.y - point_a.y)
+        return determinant != 0
 
     def __str__(self):
-        return self.point_a.name + self.point_b.name + self.point_c.name
+        return ''.join([item.name for item in self.points])
 
     def __bool__(self):
         return self.__get_status(self.point_a, self.point_b, self.point_c)
     
     def __eq__(self, other):
-        return (self.point_a, self.point_b, self.point_c) == (other.point_a, other.point_b, other.point_c) or (self.point_a, self.point_b, self.point_c) == (other.point_c, other.point_b, other.point_a)
-        
-    
+        if self.point_b.x == other.point_b.x and self.point_b.y == other.point_b.y:
+            if self.point_a.x == other.point_a.x and self.point_a.y == other.point_a.y:
+                if self.point_c.x == other.point_c.x and self.point_c.y == other.point_c.y:
+                    return True
+            elif self.point_a.x == other.point_c.x and self.point_a.y == other.point_c.y:
+                if self.point_c.x == other.point_a.x and self.point_c.y == other.point_a.y:
+                    return True
+        return False
 
-p_A = Point('A', 1, 2)
-p_B = Point('B', 0, 1)
-p_C = Point('C', -1, 2)
-p_D = Point('D', -1, 2)
-cm_ABC = CheckMark(p_A, p_B, p_C)
-cm_CBA = CheckMark(p_C, p_B, p_A)
-cm_ACB = CheckMark(p_A, p_C, p_B)
-cm_ABD = CheckMark(p_A, p_B, p_D)
-cm_DBA = CheckMark(p_D, p_B, p_A)
-print(cm_ABC == cm_CBA, cm_ABC == cm_ABD)
-print(cm_ABC == cm_DBA, cm_ABC == cm_ACB)  
+    
+A1 = Point('P1', -30, 20)
+A2 = Point('P2', -10, -10)
+A3 = Point('P3', -20, -30)
+A4 = Point('P4', 20, -30)
+A5 = Point('P5', 30, 20)
+A6 = Point('P6', 10, 10)
+A7 = Point('P7', 30, 30)
+
+cm_a = CheckMark(A1, A2, A3)
+cm_b = CheckMark(A3, A2, A4)
+cm_c = CheckMark(A3, A2, A7)
+cm_d = CheckMark(A4, A2, A3)
+cm_e = CheckMark(A2, A6, A7)
+cm_f = CheckMark(A7, A5, A6)
+cm_g = CheckMark(A1, A1, A6)
+cm_h = CheckMark(A4, A5, A4)
+cm_i = CheckMark(A3, A3, A3)
+
+print(bool(cm_a))
+print(bool(cm_b))
+print(bool(cm_c))
+print(bool(cm_d))
+print(bool(cm_e))
+print(bool(cm_f))
+print(bool(cm_g))
+print(bool(cm_h))
+print(bool(cm_i))
