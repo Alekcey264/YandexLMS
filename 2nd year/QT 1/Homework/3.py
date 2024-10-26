@@ -55,6 +55,10 @@ class TicTacToe(QWidget):
                 self.text = "O"
             else:
                 self.text = "X"
+        self.check_win()
+    
+    def check_win(self):
+        pass
 
 
 
