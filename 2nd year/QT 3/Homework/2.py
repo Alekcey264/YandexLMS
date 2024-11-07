@@ -36,11 +36,21 @@ try:
                 count += 1
     else:
         raise ValueError
+    number = '+' + ''.join([item if item.isnumeric() else '' for item in number])
+    opers = [range(910, 920), range(980, 990), range(920, 940),
+             range(920, 940), range(902, 907), range(960, 970)]
     if count == 11:
-        print('+' + ''.join([item if item.isnumeric() else '' for item in number]))
+        for item in opers:
+            if int(number[2:5]) in item:
+                print(number)
+                exit()
+        else:
+            raise TabError
     else:
         raise TypeError
 except ValueError:
     print('неверный формат')
 except TypeError:
     print('неверное количество цифр')
+except TabError:
+    print('не определяется оператор сотовой связи')
