@@ -1,8 +1,10 @@
-import csv
+with open('input.bmp', 'br') as f:
+    lines = f.read()
 
-with open('ikea.csv', encoding='utf-8') as csvfile:
-    reader = csv.DictReader(csvfile, delimiter=';', quotechar='"')
-    expensive = sorted(reader, key=lambda x: int(x['price']), reverse=True)
+header = lines[:54]
+data = lines[54:]
+negative_data = bytes([255 - item for item in data])
 
-for record in expensive[:1]:
-    print(record)
+with open('res.bmp', 'wb') as f:
+    f.write(header)
+    f.write(negative_data)
