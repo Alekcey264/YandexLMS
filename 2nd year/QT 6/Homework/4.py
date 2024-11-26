@@ -98,12 +98,10 @@ class OlympResult(QMainWindow):
     def initUI(self):
         self.resultButton.clicked.connect(self.show_results)
         self.classes.currentTextChanged.connect(self.class_changed)
-        #self.school.currentTextChanged.connect(self.school_changed)
+        self.school.currentTextChanged.connect(self.school_changed)
         self.parse_csv()
-        for item in self.schools_list:
-            self.schools.addItem(item)
-        for item in self.classes_list:
-            self.classes.addItem(item)
+        self.schools.addItems(self.schools_list)
+        self.classes.addItems(self.classes_list)
 
     def show_results(self):
         self.ch_s = self.schools.currentText()
@@ -118,15 +116,14 @@ class OlympResult(QMainWindow):
         with open('rez.csv', 'r', encoding='utf-8') as f:
             self.reader = list(csv.reader(f, delimiter=',', quotechar='"'))[1:]
         self.reader = [[i[1].split()[-2], i[2].split('-')[2], i[2].split('-')[3], i[-1]] for i in self.reader]
-        
         self.schools_list = sorted(list(set(item[1] for item in self.reader)), key=lambda x: int(x))
         self.classes_list = sorted(list(set(item[2] for item in self.reader)), key=lambda x: int(x))
 
     def class_changed(self):
         self.schools.clear()
+        self.schools.addItems([item[1] for item in filter(lambda x: self.classes.currentText() in x[2], self.reader)])
         
         
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     olr = OlympResult()
