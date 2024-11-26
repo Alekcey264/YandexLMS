@@ -96,11 +96,36 @@ class OlympResult(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        with open('rez.csv', 'r', encoding='utf-8') as f:
-            reader = csv.reader(f, delimiter=',', quotechar='"')
-        # list(filter(lambda x: ..., filter(lambda y: ..., reader)))
-        print(self.classes.currentText())
+        self.resultButton.clicked.connect(self.show_results)
+        self.classes.currentTextChanged.connect(self.class_changed)
+        #self.school.currentTextChanged.connect(self.school_changed)
+        self.parse_csv()
+        for item in self.schools_list:
+            self.schools.addItem(item)
+        for item in self.classes_list:
+            self.classes.addItem(item)
 
+    def show_results(self):
+        self.ch_s = self.schools.currentText()
+        self.ch_c = self.classes.currentText()
+        if self.ch_s == "Все":
+            self.ch_s = ""
+        if self.ch_c == "Все":
+            self.ch_c = ""
+        print(list(filter(lambda x: self.ch_s in x[1], filter(lambda y: self.ch_c in y[2], self.reader))))
+        
+    def parse_csv(self):
+        with open('rez.csv', 'r', encoding='utf-8') as f:
+            self.reader = list(csv.reader(f, delimiter=',', quotechar='"'))[1:]
+        self.reader = [[i[1].split()[-2], i[2].split('-')[2], i[2].split('-')[3], i[-1]] for i in self.reader]
+        
+        self.schools_list = sorted(list(set(item[1] for item in self.reader)), key=lambda x: int(x))
+        self.classes_list = sorted(list(set(item[2] for item in self.reader)), key=lambda x: int(x))
+
+    def class_changed(self):
+        self.schools.clear()
+        
+        
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
