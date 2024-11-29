@@ -14,13 +14,24 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>30</y>
-      <width>791</width>
-      <height>481</height>
+      <x>10</x>
+      <y>10</y>
+      <width>771</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="layout_for_buttons"/>
+   </widget>
+   <widget class="QTableView" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>771</width>
+      <height>461</height>
      </rect>
     </property>
    </widget>

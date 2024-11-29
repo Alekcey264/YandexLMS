@@ -2,7 +2,7 @@ import sqlite3
 import sys
 import io
 
-from PyQt6.QtWidgets import QMainWindow, QApplication
+from PyQt6.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 from PyQt6.QtSql import QSqlDatabase, QSqlTableModel
 from PyQt6 import uic
 
@@ -68,4 +68,37 @@ class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
         f = io.StringIO(template)
-        uic.load
+        uic.loadUi(f, self)
+        self.initUI()
+
+    def initUI(self):
+        self.con = sqlite3.connect('films_db.sqlite')
+        self.cur = self.con.cursor()
+        self.add_genres()
+        self.queryButton.clicked.connect(self.set_table_value)
+        self.tableWidget.setColumnCount(3)
+        self.set_table_value()
+        
+    def add_genres(self):
+        result = self.cur.execute('''SELECT title FROM genres''').fetchall()
+        [self.parameterSelection.addItem(item[0]) for item in result]
+    
+    def set_table_value(self):
+        text = self.parameterSelection.currentText()
+        result = self.cur.execute('''SELECT title, genre, year FROM films WHERE 
+                                  genre = (SELECT id FROM genres WHERE title = ?)''', (text,)).fetchall()
+        self.tableWidget.clear()
+        self.tableWidget.setRowCount(len(result))
+        for i in range(len(result)):
+            for j in range(len(result[i])):
+                self.tableWidget.setItem(i, j, QTableWidgetItem(str(result[i][j])))
+
+    def closeEvent(self):
+        self.con.close()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    mw = MyWidget()
+    mw.show()
+    sys.exit(app.exec())
