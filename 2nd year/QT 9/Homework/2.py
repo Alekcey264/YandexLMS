@@ -20,13 +20,22 @@ class UfoControl(QWidget):
         x = self.ufo.pos().x()
         y = self.ufo.pos().y()
         if event.key() == Qt.Key.Key_Right:
-            self.ufo.move((x + 10) % 260, y)
+            x += 10
+            if x > 250:
+                x = 0
         elif event.key() == Qt.Key.Key_Left:
-            self.ufo.move((x - 10) % 260, y)
+            x -= 10
+            if x < 0:
+                x = 250
         elif event.key() == Qt.Key.Key_Up:
-            self.ufo.move(x, (y + 10) % 260)
+            y -= 10
+            if y < 0:
+                y = 250
         elif event.key() == Qt.Key.Key_Down:
-            self.ufo.move(x, (y - 10) % 260)
+            y += 10
+            if y > 250:
+                y = 0
+        self.ufo.move(x, y)
 
 
 if __name__ == "__main__":
