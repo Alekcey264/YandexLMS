@@ -45,7 +45,7 @@ template = """<?xml version="1.0" encoding="UTF-8"?>
     <rect>
      <x>270</x>
      <y>330</y>
-     <width>60</width>
+     <width>21</width>
      <height>16</height>
     </rect>
    </property>
@@ -56,29 +56,29 @@ template = """<?xml version="1.0" encoding="UTF-8"?>
   <widget class="QLineEdit" name="x_first">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>300</x>
      <y>330</y>
      <width>31</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="x_last">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>330</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label2">
    <property name="geometry">
     <rect>
      <x>350</x>
      <y>330</y>
-     <width>31</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="x_last">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>330</y>
-     <width>60</width>
+     <width>21</width>
      <height>16</height>
     </rect>
    </property>
@@ -124,8 +124,14 @@ class MakePlots(QWidget):
         self.make_plot.clicked.connect(self.calculate_values)
 
     def calculate_values(self):
-        pass
-
+        if self.function_line.text() and self.x_first.text() and self.x_last.text():
+            x0, x1 = int(self.x_first.text()), int(self.x_last.text())
+            foo = self.function_line.text()
+            if self.function_line.text().startswith("y"):
+                foo = self.function_line.text()[self.function_line.text().index("=") + 1:]
+            self.graphicsView.clear()
+            self.graphicsView.plot([i for i in range(x0, x1 + 1)], [eval(foo.replace('x', str(i))) for i in range(x0, x1 + 1)], pen='r')
+            
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
