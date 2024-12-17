@@ -1,0 +1,12 @@
+git merge -m "merge hat" origin/hat
+git diff origin/demo - отличаются содержимым readme-файлов и пуговицами
+<<Создал репозиторий на сайте>>
+git remote add student git@github.com:Alekcey264/human.git
+git push -u student master
+
+Коммиты из WEB-интерфейса:
+1. 7d5cd9d87337dcd48708dce597a3c0566cb349ef - init
+2. 949c4a16dbb5cd482965537bfb1558e078afd252 - heat added
+3. 079fa1b2baa18b6a7a03ff3a7d00e9fca4d43a0c - README added
+4. df455a79680d70a43d65351f338e25d0ef26c169 - fix readme
+5. b64e004827e94b72381ebe96d45d01f7a0d472d1 - merge hat

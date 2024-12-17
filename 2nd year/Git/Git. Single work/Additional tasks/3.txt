@@ -1,0 +1,10 @@
+git branch branch4567890
+git checkout branch4567890
+<<Изменяем файл>>
+git add numbers.txt
+git commit -m "Changed numbers"
+git checkout main
+git merge -m "merge with 1234567" branch1234567
+<<Конфликтов нет>>
+git merge -m "merge with 4567890" branch4567890
+<<Возник конфликт>

@@ -1,0 +1,23 @@
+cd ~
+mkdir git_lab1_lesson2
+cd git_lab1_lesson2
+git clone https://github.com/YandexLyceum/human.git
+ls -a
+cd human
+git branch -a
+git branch -f boots origin/boots
+git branch -f buttons origin/buttons
+git branch -f demo origin/demo
+git branch -f hat origin/hat 
+cat "human.txt"
+git diff boots - с одним параметром
+git diff master boots - с двумя параметрами
+git diff buttons
+git diff demo
+git diff hat
+git checkout -b boots_buttons
+git merge -m "merge boots" boots
+<<Нет конфликта>> - потому что строки не переписываются, а добавляются
+git merge -m "merge buttons" buttons
+<<Нет конфликта>> - потому что строки изменяются в пустых местах
+git checkout master

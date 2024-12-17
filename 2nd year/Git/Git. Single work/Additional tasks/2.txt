@@ -1,0 +1,5 @@
+git checkout -b "branch1234567"
+git add numbers.txt
+git commit -m "New version"
+git status
+git diff main branch1234567

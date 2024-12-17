@@ -1,0 +1,6 @@
+mkdir git_3
+cd git_3
+<<Создали файл numbers.txt>>
+git init
+git add numbers.txt
+git commit -m "First commit"
