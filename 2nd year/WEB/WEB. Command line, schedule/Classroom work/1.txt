@@ -1,0 +1,6 @@
+Система: macOS
+mkdir -p tmp/.tasks/bash/one/
+ls tmp
+ls -hal
+mv .tasks/bash/one/ .tasks/one/
+rm -d .tasks/bash/
