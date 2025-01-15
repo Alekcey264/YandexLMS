@@ -29,7 +29,7 @@ def image_mars():
     return f"""<!doctype html>
                 <html lang="en>
                     <head>
-                        <meta chatset="utf-8">
+                        <meta charset="utf-8">
                         <title>Привет, Марс!</title>
                     </head>
                     <body>
@@ -45,7 +45,7 @@ def promotion_image():
     return f"""<!doctype html>
             <html lang="en>
                 <head>
-                    <meta chatset="utf-8">
+                    <meta charset="utf-8">
                     <title>Привет, Марс!</title>
                     <link rel="stylesheet" 
                     href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
