@@ -9,10 +9,7 @@ def carousel():
             <html lang="en">
                 <head>
                     <meta charset="utf-8">
-                    <link rel="stylesheet" 
-                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
-                        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
-                        crossorigin="anonymous">
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
                     <title>Пейзажи Марса</title>
                 </head>
                 <body>
@@ -35,12 +32,9 @@ def carousel():
                             </div>
                         </div>
                     </div>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
-                    integrity="sha384-pzjw8f+ua7Kw1TIqkvQ8fXzIBsVGAHmxMRBA+jT3Glh94A1ANUUhAU8tWtEd7fG8" 
-                    crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>               
                 </body> 
             </html>"""
-
 
 
 if __name__ == "__main__":
