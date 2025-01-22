@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if "инженер" in prof or "строитель" in prof %}
+        <h2 style="text-align: center;">Инженерные симуляторы</h2>
+        <img src='{{ url_for("static", filename="img/Engeneer.png") }}' style="display: block; margin: 0 auto;">
+    {% else %}
+        <h2 style="text-align: center;">Научные симуляторы</h2>
+        <img src='{{ url_for("static", filename="img/Science.png") }}' style="display: block; margin: 0 auto;">
+    {% endif %}
+{% endblock %}
