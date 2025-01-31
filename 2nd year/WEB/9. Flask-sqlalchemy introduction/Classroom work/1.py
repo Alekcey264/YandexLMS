@@ -1,12 +1,17 @@
-from flask import Flask
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'example_secret_key'
+import sqlalchemy
+import datetime
 
 
-def main():
-    app.run(host='localhost', port=8080)
-
-
-if __name__ == '__main__':
-    main()
+class User():
+    __tablename__ = 'users'
+    
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    surname = sqlalchemy.Column(sqlalchemy.String)
+    name = sqlalchemy.Column(sqlalchemy.String)
+    age = sqlalchemy.Column(sqlalchemy.Integer)
+    position = sqlalchemy.Column(sqlalchemy.String)
+    speciality = sqlalchemy.Column(sqlalchemy.String)
+    address = sqlalchemy.Column(sqlalchemy.String)
+    email = sqlalchemy.Column(sqlalchemy.String, unique=True)
+    hashed_password = sqlalchemy.Column(sqlalchemy.String)
+    modified_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
