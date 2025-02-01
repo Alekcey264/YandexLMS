@@ -2,7 +2,7 @@ import sqlalchemy
 import datetime
 
 
-class User():
+class User(SqlAlchemyBase): # type: ignore
     __tablename__ = 'users'
     
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
