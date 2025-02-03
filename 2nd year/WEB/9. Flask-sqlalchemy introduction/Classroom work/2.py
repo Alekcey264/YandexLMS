@@ -10,7 +10,7 @@ class Jobs(SqlAlchemyBase): # type: ignore
     leader = sqlalchemy.orm.relationship('User')
     job = sqlalchemy.Column(sqlalchemy.String)
     work_size = sqlalchemy.Column(sqlalchemy.Integer)
-    collaborations = sqlalchemy.Column(sqlalchemy.String)
+    collaborators = sqlalchemy.Column(sqlalchemy.String)
     start_date = sqlalchemy.Column(sqlalchemy.Date, default=datetime.date.today)
     end_date = sqlalchemy.Column(sqlalchemy.Date, default=datetime.date.today)    
     is_finished = sqlalchemy.Column(sqlalchemy.Boolean)
