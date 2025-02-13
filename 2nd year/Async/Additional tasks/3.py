@@ -1,7 +1,7 @@
 import asyncio
 
 
-async def buying_a_gift():
+async def buying_a_gift(name, ):
     pass
 
 
@@ -21,8 +21,7 @@ async def main():
     for i in range(len(stops)):
         tasks = []
         for item in gifts:
-            
-
+            pass
 
 
 if __name__ == '__main__':
