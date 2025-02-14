@@ -1,4 +1,4 @@
-from yandex_testing_lesson import is_palindrome
+from yandex_testing_lesson import is_palindrome # type: ignore
 
 
 def is_palindrome_test():
